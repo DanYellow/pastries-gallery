@@ -22,6 +22,13 @@
   ) {
     $protocol = 'https://';
   }
+
+  $current_url = $protocol . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']) . $_SERVER['REQUEST_URI'];
+
+  // echo $current_url;
+
+  // echo '//'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -34,10 +41,10 @@
 
     <meta property="og:title" content="<?php echo $altPastryName; ?> - Pâtisseries faites maison">
     <!-- <meta property="og:site_name" content=""> -->
-    <meta property="og:url" content="">
+    <meta property="og:url" content="<?php echo $current_url; ?>">
     <!-- <meta property="og:description" content=""> -->
     <meta property="og:type" content="website">
-    <meta property="og:image" content="<?php echo $protocol . $_SERVER['SERVER_NAME'] . "/" . $list_imgs_folder[0]; ?>">
+    <meta property="og:image" content="<?php echo $protocol . $_SERVER['SERVER_NAME'] . dirname($_SERVER['PHP_SELF']) . "/" . $list_imgs_folder[0]; ?>">
 
     <link rel="stylesheet" href="assets/reset.css">
     <link rel="stylesheet" href="assets/style.css">
@@ -51,9 +58,7 @@
 
         <ul class="details">
           <?php
-            
             foreach ($list_imgs_folder as $idx=>$img) {
-              $img_info = pathinfo($img);
               echo "
                 <li class='details-item'>
                   <figure>
