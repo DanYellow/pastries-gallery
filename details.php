@@ -12,6 +12,16 @@
 
   $lowercase_folder = strtolower($folder);
   $list_imgs_folder = glob("$root_folder/{$lowercase_folder}/*.jpg");
+
+  $protocol = 'http://';
+  if (
+    isset($_SERVER['HTTPS']) &&
+    ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
+    isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
+    $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'
+  ) {
+    $protocol = 'https://';
+  }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -27,7 +37,7 @@
     <meta property="og:url" content="">
     <!-- <meta property="og:description" content=""> -->
     <meta property="og:type" content="website">
-    <meta property="og:image" content="<?php echo $_SERVER['SERVER_NAME'] . "/" . $list_imgs_folder[0]; ?>">
+    <meta property="og:image" content="<?php echo $protocol . $_SERVER['SERVER_NAME'] . "/" . $list_imgs_folder[0]; ?>">
 
     <link rel="stylesheet" href="assets/reset.css">
     <link rel="stylesheet" href="assets/style.css">
