@@ -9,6 +9,9 @@
     $altPastryName = stream_get_contents($fp);
     fclose($fp);   
   }
+
+  $lowercase_folder = strtolower($folder);
+  $list_imgs_folder = glob("$root_folder/{$lowercase_folder}/*.jpg");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,6 +21,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $altPastryName; ?> - Pâtisseries faites maison</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍰</text></svg>">
+
+    <meta property="og:title" content="<?php echo $altPastryName; ?> - Pâtisseries faites maison">
+    <!-- <meta property="og:site_name" content=""> -->
+    <meta property="og:url" content="">
+    <!-- <meta property="og:description" content=""> -->
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="<?php echo $_SERVER['SERVER_NAME'] . "/" . $list_imgs_folder[0]; ?>">
 
     <link rel="stylesheet" href="assets/reset.css">
     <link rel="stylesheet" href="assets/style.css">
@@ -31,8 +41,7 @@
 
         <ul class="details">
           <?php
-            $lowercase_folder = strtolower($folder);
-            $list_imgs_folder = glob("$root_folder/{$lowercase_folder}/*.jpg");
+            
             foreach ($list_imgs_folder as $idx=>$img) {
               $img_info = pathinfo($img);
               echo "
