@@ -18,13 +18,18 @@
         <ul class="gallery">
             <?php
                 $list_imgs = glob('patisseries/*.jpg');
-                foreach ($list_imgs as $img) {
+                $list_imgs_length = count($list_imgs);
+                $start_fetch_high_idx = floor($list_imgs_length / 10);
+                
+                foreach ($list_imgs as $idx => $img) {
                     $img_info = pathinfo($img);
+
+                    $fetch_priority = $idx <= $start_fetch_high_idx ? "high" : "low";
 
                     echo "
                         <li class='gallery-item'>
                             <a class='gallery-item-link' aria-label='{$img_info['filename']}' href='details.php?folder={$img_info['filename']}'>
-                                <img src='{$img}' alt='' loading='lazy'>
+                                <img src='{$img}' alt='' loading='lazy' fetchpriority='{$fetch_priority}'>
                             </a>
                         </li>
                     ";
