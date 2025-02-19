@@ -1,0 +1,145 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    @media (prefers-reduced-motion) {
+        scroll-behavior: auto;
+    }
+}
+
+body {
+    background-color: #faecfc;
+    color: #333333;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: #333333;
+        color: #fce3ff;
+    }
+}
+
+.main {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding-top: 5.625rem;
+    padding-bottom: 4rem;
+
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+}
+
+.nav-header,
+.nav-footer {
+    margin-bottom: 3.75rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.link-details {
+    font-size: 1.75rem;
+    position: relative;
+    color: #fce3ff;
+
+    &::before {
+        content: "";
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        top: -5px;
+        background-color: #191919;
+        position: absolute;
+        z-index: -1;
+        transform: rotateZ(5deg);
+        transform-origin: center center;
+        transition: transform 150ms;
+    }
+
+    &:hover::before {
+        transform: rotateZ(-3deg);
+        color: #fff;
+    }
+}
+
+.header-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1.95rem;
+
+    @media (width >= 40rem) {
+        font-size: 3.75rem;
+    }
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+    gap: 1.25rem;
+
+    @media (width >= 40rem) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (width >= 64rem) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    &::before {
+        content: "";
+        width: 0;
+        padding-bottom: 100%;
+        grid-row: 1 / 1;
+        grid-column: 1 / 1;
+    }
+
+    & > *:first-child {
+        grid-row: 1 / 1;
+        grid-column: 1 / 1;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        height: 100%;
+        transition: transform 350ms;
+    }
+}
+
+.gallery-item-link {
+    overflow: hidden;
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: 0.3875rem;
+    &:focus {
+        outline: hotpink 3px solid;
+    }
+
+    &:hover {
+        img {
+            transform: scale(1.25) rotateZ(5deg);
+        }
+    }
+}
+
+.details-item {
+    margin-bottom: 0.5rem;
+}
+
+.details {
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.unknown-pastry {
+    font-size: 1.75rem;
+}
