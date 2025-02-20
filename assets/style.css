@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+@view-transition {
+    navigation: auto;
+}
+
 html {
     scroll-behavior: smooth;
     @media (prefers-reduced-motion) {
@@ -11,15 +15,20 @@ html {
     }
 }
 
-body {
-    background-color: #faecfc;
-    color: #333333;
-    font-family: "Helvetica Neue", Arial, sans-serif;
+:root {
+    --main-text-color: #333333;
+    --background-color: #faecfc;
 
     @media (prefers-color-scheme: dark) {
-        background-color: #333333;
-        color: #fce3ff;
+        --main-text-color: #fce3ff;
+        --background-color: #333333;
     }
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--main-text-color);
 }
 
 .main {
@@ -51,7 +60,7 @@ body {
         right: -5px;
         bottom: -5px;
         top: -5px;
-        background-color: #191919;
+        background-color: #333333;
         position: absolute;
         z-index: -1;
         transform: rotateZ(5deg);
@@ -103,6 +112,16 @@ body {
         grid-column: 1 / 1;
     }
 
+    @media (prefers-reduced-motion: no-preference) {
+        & > li {
+            transition: opacity 0.3s linear;
+        }
+
+        &:where(:focus-within, :hover) > li:not(:focus-within, :hover) {
+            opacity: 0.75;
+        }
+    }
+
     img {
         display: block;
         width: 100%;
@@ -112,19 +131,23 @@ body {
     }
 }
 
+.gallery-item img {
+    contain: layout;
+}
+
 .gallery-item-link {
     overflow: hidden;
     display: block;
     height: 100%;
     width: 100%;
     border-radius: 0.3875rem;
-    &:focus {
-        outline: hotpink 3px solid;
+    &:where(:focus, :hover) {
+        outline: var(--main-text-color) 4px solid;
     }
 
-    &:hover {
+    &:where(:focus, :hover) {
         img {
-            transform: scale(1.25) rotateZ(5deg);
+            transform: scale(1.25) rotateZ(3deg);
         }
     }
 }
@@ -142,4 +165,71 @@ body {
 
 .unknown-pastry {
     font-size: 1.75rem;
+}
+
+.details {
+    view-transition-name: photo-meta;
+}
+
+::view-transition-new(photo-heading),
+::view-transition-new(photo-location-time),
+::view-transition-new(photo-meta) {
+    animation: 0.3s ease var(--animation-delay, 0s) both fade-in,
+        0.3s ease var(--animation-delay, 0s) both slide-up;
+}
+::view-transition-new(photo-heading) {
+    --animation-delay: 50ms;
+}
+::view-transition-new(photo-location-time) {
+    --animation-delay: 0.1s;
+}
+::view-transition-new(photo-meta) {
+    --animation-delay: 0.15s;
+}
+::view-transition-old(photo-heading),
+::view-transition-old(photo-location-time),
+::view-transition-old(photo-meta) {
+    animation: 0.2s ease var(--animation-delay, 0s) both fade-out,
+        0.2s ease var(--animation-delay, 0s) both slide-down;
+}
+::view-transition-old(photo-heading) {
+    --animation-delay: 0.15s;
+}
+::view-transition-old(photo-location-time) {
+    --animation-delay: 0.1s;
+}
+::view-transition-old(photo-meta) {
+    --animation-delay: 50ms;
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes slide-up {
+    from {
+        transform: translateY(2.5rem);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+@keyframes slide-down {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(2.5rem);
+    }
 }
