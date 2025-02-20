@@ -55,10 +55,7 @@ body {
 
     &::before {
         content: "";
-        left: -5px;
-        right: -5px;
-        bottom: -5px;
-        top: -5px;
+        inset: -5px;
         background-color: var(--main-text-color);
         position: absolute;
         z-index: -1;
@@ -67,9 +64,8 @@ body {
         transition: transform 150ms;
     }
 
-    &:hover::before {
+    &:where(:focus-within, :hover)::before {
         transform: rotateZ(-3deg);
-        color: #fff;
     }
 }
 
