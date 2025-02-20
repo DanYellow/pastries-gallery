@@ -113,7 +113,7 @@ body {
         }
 
         &:where(:focus-within, :hover) > li:not(:focus-within, :hover) {
-            opacity: 0.75;
+            opacity: 0.65;
         }
     }
 

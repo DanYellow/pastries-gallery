@@ -47,6 +47,13 @@ $current_url = $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
     <link rel="stylesheet" href="assets/reset.css">
     <link rel="stylesheet" href="assets/style.css">
+
+
+    <?php
+        foreach ($list_imgs_folder as $idx => $img) {
+            echo "<link rel='preload' href='{$img}' as='image' />\n";
+        }
+    ?>
 </head>
 
 <body>
