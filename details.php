@@ -57,14 +57,21 @@ $current_url = $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
         </header>
 
         <ul class="details">
+            <!-- <li>
+                <img src="patisseries/dunes-blanches/IMG_0465-HDR.jpg" alt="">
+            </li> -->
+            <!-- <li>
+                <img src="patisseries/dunes-blanches/IMG_0465-HDR.jpg" alt="">
+            </li> -->
             <?php
             foreach ($list_imgs_folder as $idx => $img) {
                 echo "
-                <li class='details-item'>
-                  <figure>
-                    <img src='{$img}' alt='{$folder}-{$idx}' loading='lazy'>
-                  </figure>
-                </li>";
+                    <li class='details-item'>
+                        <figure>
+                            <img src='{$img}' alt='{$folder}-{$idx}' loading='lazy' style='view-transition-name: photo-details-{$idx}'>
+                        </figure>
+                    </li>
+                ";
             }
             ?>
         </ul>

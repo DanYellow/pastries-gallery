@@ -36,7 +36,6 @@ body {
     margin: 0 auto;
     padding-top: 5.625rem;
     padding-bottom: 4rem;
-
     padding-left: 0.8rem;
     padding-right: 0.8rem;
 }
@@ -52,7 +51,7 @@ body {
 .link-details {
     font-size: 1.75rem;
     position: relative;
-    color: #fce3ff;
+    color: var(--background-color);
 
     &::before {
         content: "";
@@ -60,7 +59,7 @@ body {
         right: -5px;
         bottom: -5px;
         top: -5px;
-        background-color: #333333;
+        background-color: var(--main-text-color);
         position: absolute;
         z-index: -1;
         transform: rotateZ(5deg);
@@ -168,39 +167,27 @@ body {
 }
 
 .details {
-    view-transition-name: photo-meta;
+    view-transition-name: details-pastry-container;
 }
 
-::view-transition-new(photo-heading),
-::view-transition-new(photo-location-time),
-::view-transition-new(photo-meta) {
+::view-transition-new(details-pastry-container) {
     animation: 0.3s ease var(--animation-delay, 0s) both fade-in,
         0.3s ease var(--animation-delay, 0s) both slide-up;
 }
-::view-transition-new(photo-heading) {
-    --animation-delay: 50ms;
-}
-::view-transition-new(photo-location-time) {
-    --animation-delay: 0.1s;
-}
-::view-transition-new(photo-meta) {
+
+::view-transition-new(details-pastry-container) {
     --animation-delay: 0.15s;
 }
-::view-transition-old(photo-heading),
-::view-transition-old(photo-location-time),
-::view-transition-old(photo-meta) {
+
+::view-transition-old(details-pastry-container) {
     animation: 0.2s ease var(--animation-delay, 0s) both fade-out,
         0.2s ease var(--animation-delay, 0s) both slide-down;
 }
-::view-transition-old(photo-heading) {
-    --animation-delay: 0.15s;
-}
-::view-transition-old(photo-location-time) {
-    --animation-delay: 0.1s;
-}
-::view-transition-old(photo-meta) {
+
+::view-transition-old(details-pastry-container) {
     --animation-delay: 50ms;
 }
+
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -209,6 +196,7 @@ body {
         opacity: 1;
     }
 }
+
 @keyframes fade-out {
     from {
         opacity: 1;
@@ -217,6 +205,7 @@ body {
         opacity: 0;
     }
 }
+
 @keyframes slide-up {
     from {
         transform: translateY(2.5rem);
@@ -225,6 +214,7 @@ body {
         transform: translateY(0);
     }
 }
+
 @keyframes slide-down {
     from {
         transform: translateY(0);

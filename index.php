@@ -20,7 +20,7 @@
                 $list_imgs = glob('patisseries/*.jpg');
                 $list_imgs_length = count($list_imgs);
                 $start_fetch_high_idx = floor($list_imgs_length / 10);
-                
+
                 foreach ($list_imgs as $idx => $img) {
                     $img_info = pathinfo($img);
 
@@ -29,7 +29,7 @@
                     echo "
                         <li class='gallery-item'>
                             <a class='gallery-item-link' aria-label='{$img_info['filename']}' href='details.php?folder={$img_info['filename']}'>
-                                <img src='{$img}' alt='' loading='lazy' fetchpriority='{$fetch_priority}'>
+                                <img src='{$img}' alt='{$img_info['filename']}' loading='lazy' fetchpriority='{$fetch_priority}' style='view-transition-name: photo-{$idx}' />
                             </a>
                         </li>
                     ";
