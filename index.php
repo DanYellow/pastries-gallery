@@ -14,7 +14,7 @@
 <body>
     <main class="main">
         <header>
-            <h1 class="header-title">🍰 Pâtisseries !</h1>
+            <h1 class="header-title" style='view-transition-name: title'>🍰 Pâtisseries !</h1>
         </header>
 
         <ul class="gallery">

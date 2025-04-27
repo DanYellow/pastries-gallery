@@ -59,7 +59,7 @@ $current_url = $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 <body>
     <main class="main">
         <header class="nav-header">
-            <h1 class="header-title"><?php echo $altPastryName; ?></h1>
+            <h1 class="header-title" style='view-transition-name: title'><?php echo $altPastryName; ?></h1>
             <a href="index.php" class="link-details">Accueil</a>
         </header>
 
@@ -75,7 +75,7 @@ $current_url = $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
                 echo "
                     <li class='details-item'>
                         <figure>
-                            <img src='{$img}' alt='{$folder}-{$idx}' loading='lazy'" .  ($idx == 0 ? "style='view-transition-name: image'" : "") . ">
+                            <img src='{$img}' alt='{$folder}-{$idx}' loading='lazy'" . ($idx == 0 ? "style='view-transition-name: image'" : "") . ">
                         </figure>
                     </li>
                 ";
@@ -84,9 +84,9 @@ $current_url = $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
         </ul>
 
         <?php
-        if (empty($list_imgs_folder)) {
-            echo "<p class='unknown-pastry'>Il semblerait que ”{$folder}” n'existe pas. A faire un jour peut-être.</p>";
-        }
+            if (empty($list_imgs_folder)) {
+                echo "<p class='unknown-pastry'>Il semblerait que ”{$folder}” n'existe pas. A faire un jour peut-être.</p>";
+            }
         ?>
     </main>
     <footer class="nav-footer">

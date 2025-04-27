@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+::view-transition {
+    pointer-events: none;
+}
+
 html {
     scroll-behavior: smooth;
     @media (prefers-reduced-motion) {
@@ -12,6 +16,8 @@ html {
 }
 
 :root {
+    /* view-transition-name: none; */
+
     --main-text-color: #333333;
     --background-color: #faecfc;
 
@@ -19,6 +25,10 @@ html {
         --main-text-color: #fce3ff;
         --background-color: #333333;
     }
+}
+
+@view-transition {
+    navigation: auto;
 }
 
 body {
@@ -161,70 +171,8 @@ body {
     font-size: 1.75rem;
 }
 
-/* .details {
-    view-transition-name: details-pastry-container;
-} */
-
-/* ::view-transition-new(details-pastry-container) {
-    animation: 0.3s ease var(--animation-delay, 0s) both fade-in,
-        0.3s ease var(--animation-delay, 0s) both slide-up;
-}
-
-::view-transition-new(details-pastry-container) {
-    --animation-delay: 0.15s;
-}
-
-::view-transition-old(details-pastry-container) {
-    animation: 0.2s ease var(--animation-delay, 0s) both fade-out,
-        0.2s ease var(--animation-delay, 0s) both slide-down;
-}
-
-::view-transition-old(details-pastry-container) {
-    --animation-delay: 50ms;
-} */
-
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fade-out {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
-@keyframes slide-up {
-    from {
-        scale: 20;
-    }
-
-}
-
-@keyframes slide-down {
-
-    to {
-        scale: 1;
-    }
-}
-
-@view-transition {
-    navigation: auto;
-}
-
 /* Create a custom animation */
 @keyframes move-out {
-    from {
-        opacity: 1;
-    }
-
     to {
         opacity: 0;
     }
@@ -234,17 +182,39 @@ body {
     from {
         opacity: 0;
     }
-
-    to {
-        opacity: 1;
-    }
 }
 
 /* Apply the custom animation to the old and new page states */
-::view-transition-old(root) {
-    animation: 0.4s ease-out both slide-up;
+::view-transition-old(image) {
+    animation: 0.3s ease-out both move-out;
 }
 
-::view-transition-new(root) {
-    animation: 0.4s ease-in both slide-down;
+::view-transition-new(image) {
+    animation: 0.3s ease-in both move-in;
+}
+
+@keyframes slide-out {
+    to {
+        translate: 0 100px;
+        opacity: 0.25;
+        scale: 1 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slide-in {
+    from {
+        translate: 0 100px;
+        scale: 1 1;
+        opacity: 0.25;
+        transform: scale(1);
+    }
+}
+
+::view-transition-old(title) {
+    animation: 0.2s ease-out both slide-out;
+}
+
+::view-transition-new(title) {
+    animation: 0.2s ease-in both slide-in;
 }
