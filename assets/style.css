@@ -140,7 +140,7 @@ body {
 
     &:where(:focus, :hover) {
         img {
-            transform: scale(1.25) rotateZ(3deg);
+            transform: scale(1.25);
         }
     }
 }
@@ -203,19 +203,15 @@ body {
 
 @keyframes slide-up {
     from {
-        transform: translateY(2.5rem);
+        scale: 20;
     }
-    to {
-        transform: translateY(0);
-    }
+
 }
 
 @keyframes slide-down {
-    from {
-        transform: translateY(0);
-    }
+
     to {
-        transform: translateY(2.5rem);
+        scale: 1;
     }
 }
 
