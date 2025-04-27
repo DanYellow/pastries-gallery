@@ -29,7 +29,7 @@
                     echo "
                         <li class='gallery-item'>
                             <a class='gallery-item-link' aria-label='{$img_info['filename']}' href='details.php?folder={$img_info['filename']}'>
-                                <img src='{$img}' alt='{$img_info['filename']}' loading='lazy' fetchpriority='{$fetch_priority}' style='view-transition-name: photo-{$idx}' />
+                                <img src='{$img}' alt='{$img_info['filename']}' loading='lazy' fetchpriority='{$fetch_priority}' style='view-transition-name: photo-{$img_info['filename']}' />
                             </a>
                         </li>
                     ";

@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-@view-transition {
-    navigation: auto;
-}
-
 html {
     scroll-behavior: smooth;
     @media (prefers-reduced-motion) {
@@ -157,6 +153,7 @@ body {
     img {
         width: 100%;
         object-fit: cover;
+        border-radius: 0.3875rem;
     }
 }
 
@@ -164,11 +161,11 @@ body {
     font-size: 1.75rem;
 }
 
-.details {
+/* .details {
     view-transition-name: details-pastry-container;
-}
+} */
 
-::view-transition-new(details-pastry-container) {
+/* ::view-transition-new(details-pastry-container) {
     animation: 0.3s ease var(--animation-delay, 0s) both fade-in,
         0.3s ease var(--animation-delay, 0s) both slide-up;
 }
@@ -184,7 +181,7 @@ body {
 
 ::view-transition-old(details-pastry-container) {
     --animation-delay: 50ms;
-}
+} */
 
 @keyframes fade-in {
     from {
@@ -220,4 +217,38 @@ body {
     to {
         transform: translateY(2.5rem);
     }
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+/* Create a custom animation */
+@keyframes move-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes move-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Apply the custom animation to the old and new page states */
+::view-transition-old(root) {
+    animation: 0.4s ease-out both slide-up;
+}
+
+::view-transition-new(root) {
+    animation: 0.4s ease-in both slide-down;
 }

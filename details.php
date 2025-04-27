@@ -75,7 +75,7 @@ $current_url = $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
                 echo "
                     <li class='details-item'>
                         <figure>
-                            <img src='{$img}' alt='{$folder}-{$idx}' loading='lazy' style='view-transition-name: photo-details-{$idx}'>
+                            <img src='{$img}' alt='{$folder}-{$idx}' loading='lazy'" .  ($idx == 0 ? "style='view-transition-name: photo-{$folder}'" : "") . ">
                         </figure>
                     </li>
                 ";
