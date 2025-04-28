@@ -30,7 +30,7 @@
 
                     echo "
                         <li class='gallery-item'>
-                            <a class='gallery-item-link' aria-label='{$img_info['filename']}' href='details.php?folder={$img_info['filename']}' data-gallery-item-link>
+                            <a class='gallery-item-link' aria-label='{$img_info['filename']}' href='details.php?folder={$img_info['filename']}' data-gallery-item-link={$img_info['filename']}>
                                 <img src='{$img}' alt='{$img_info['filename']}' loading='lazy' fetchpriority='{$fetch_priority}' />
                             </a>
                         </li>
@@ -39,5 +39,17 @@
             ?>
         </ul>
     </main>
+
+    <script>
+        const previousURL = new URL(navigation.entries().at(-2).url);
+        if (previousURL) {
+            const searchParams = new URLSearchParams(navigation.entries().at(-2).url);
+            const lastItemFolder = previousURL.searchParams.get("folder");
+            if (lastItemFolder) {
+                const item = document.querySelector(`[data-gallery-item-link=${lastItemFolder}]`);
+                item.querySelector("img").style.setProperty("view-transition-name", "image");
+            }
+        }
+    </script>
 </body>
 </html>
