@@ -16,7 +16,7 @@ html {
 }
 
 :root {
-    /* view-transition-name: none; */
+    view-transition-name: none;
 
     --main-text-color: #333333;
     --background-color: #faecfc;
@@ -150,7 +150,7 @@ body {
 
     &:where(:focus, :hover) {
         img {
-            transform: scale(1.25);
+            transform: scale(1.25) rotateZ(5deg);
         }
     }
 }
@@ -175,12 +175,15 @@ body {
 @keyframes move-out {
     to {
         opacity: 0;
+        rotate: z 5deg;
+
     }
 }
 
 @keyframes move-in {
     from {
         opacity: 0;
+        rotate: z 5deg;
     }
 }
 
