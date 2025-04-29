@@ -82,7 +82,7 @@ $item_index = array_search($lowercase_folder, $list_cleaned_items);
                 <?php } else { ?>
                     <div></div>
                 <?php } ?>
-                <a href="index.php" class="link-details">Accueil</a>
+                <a href="index.php" class="link-main">Accueil</a>
 
                 <?php
                     if ($list_cleaned_items[$item_index + 1]) {
@@ -123,7 +123,7 @@ $item_index = array_search($lowercase_folder, $list_cleaned_items);
         ?>
     </main>
     <footer class="nav-footer">
-        <a href="#top" class="link-details">Remonter</a>
+        <a href="#top" class="link-main">Remonter</a>
     </footer>
 </body>
 
