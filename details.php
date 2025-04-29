@@ -24,6 +24,16 @@ if (
 }
 
 $current_url = $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+function get_image_name($img)
+{
+    return pathinfo($img)['filename'];
+}
+
+$list_imgs = glob("$root_folder/*.jpg");
+$list_cleaned_items = array_map('get_image_name', $list_imgs);
+
+$item_index = array_search($lowercase_folder, $list_cleaned_items);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -60,7 +70,29 @@ $current_url = $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
     <main class="main">
         <header class="nav-header">
             <h1 class="header-title" style='view-transition-name: title'><?php echo $altPastryName; ?></h1>
-            <a href="index.php" class="link-details">Accueil</a>
+
+            <nav class="nav-links">
+                <?php
+                    if ($list_cleaned_items[$item_index - 1]) {
+                ?>
+                    <a href='details.php?folder=<?php echo $list_cleaned_items[$item_index - 1]; ?>' class="navigation-link">
+                        <span style="scale: -1 1; text-decoration: none;">➜</span>
+                        <span><?php echo str_replace('-', ' ', $list_cleaned_items[$item_index - 1]); ?></span>
+                    </a>
+                <?php } else { ?>
+                    <div></div>
+                <?php } ?>
+                <a href="index.php" class="link-details">Accueil</a>
+
+                <?php
+                    if ($list_cleaned_items[$item_index + 1]) {
+                ?>
+                    <a href='details.php?folder=<?php echo $list_cleaned_items[$item_index + 1]; ?>' class="navigation-link" style="justify-self: end;">
+                        <span><?php echo str_replace('-', ' ', $list_cleaned_items[$item_index + 1]); ?></span>
+                        <span style="text-decoration: none;">➜</span>
+                    </a>
+                <?php } ?>
+            </nav>
         </header>
 
         <ul class="details">
@@ -85,7 +117,7 @@ $current_url = $protocol . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
         <?php
             if (empty($list_imgs_folder)) {
-                echo "<p class='unknown-pastry'>Il semblerait que ”{$folder}” n'existe pas. A faire un jour peut-être.</p>";
+                echo "<p class='unknown-pastry'>Il semblerait que la pâtisserie ”{$folder}” n'existe pas. A faire un jour peut-être.</p>";
             }
         ?>
     </main>

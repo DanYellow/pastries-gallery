@@ -58,6 +58,8 @@ body {
     font-size: 1.75rem;
     position: relative;
     color: var(--background-color);
+    width: fit-content;
+    justify-self: center;
 
     &::before {
         content: "";
@@ -169,6 +171,24 @@ body {
 
 .unknown-pastry {
     font-size: 1.75rem;
+}
+
+.nav-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+}
+
+.navigation-link {
+    display: flex;
+    gap: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--main-text-color);
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 /* Create a custom animation */
