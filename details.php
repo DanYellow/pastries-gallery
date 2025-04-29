@@ -96,6 +96,7 @@ $item_index = array_search($lowercase_folder, $list_cleaned_items);
         </header>
 
         <ul class="details">
+        <!-- https://monknow.github.io/almanac-view-transition/index-1.html -->
             <!-- <li>
                 <img src="patisseries/dunes-blanches/IMG_0465-HDR.jpg" alt="">
             </li> -->
