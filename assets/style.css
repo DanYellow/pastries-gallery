@@ -20,6 +20,7 @@ html {
 
     --main-text-color: #333333;
     --background-color: #faecfc;
+    --direction: 1;
 
     @media (prefers-color-scheme: dark) {
         --main-text-color: #fce3ff;
@@ -37,13 +38,17 @@ body {
     color: var(--main-text-color);
 }
 
-.main {
+.container {
     max-width: 75rem;
     margin: 0 auto;
-    padding-top: 5.625rem;
-    padding-bottom: 4rem;
     padding-left: 0.8rem;
     padding-right: 0.8rem;
+    margin-top: 0.625rem;
+}
+
+.main {
+    margin-top: 4rem;
+    padding-bottom: 4rem;
 }
 
 .nav-header,
@@ -177,9 +182,10 @@ body {
     display: grid;
     grid-template-columns: auto;
     width: 100%;
-    row-gap: 1rem;
+    row-gap: 2rem;
 
     @media (width > 768px) {
+        row-gap: 1rem;
         grid-template-columns: repeat(3, 1fr);
     }
 
@@ -262,3 +268,34 @@ body {
 ::view-transition-new(title) {
     animation: 0.2s ease-in both slide-in;
 }
+
+
+/* ::view-transition-old(page) {
+	animation: slide-out 5s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+
+::view-transition-new(page) {
+	animation: slide-in 5s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+}
+
+@keyframes slide-out {
+	0% {
+		transform: translateX(0%);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateX(calc(50% * var(--direction, 1)));
+	}
+}
+
+@keyframes slide-in {
+	0% {
+		opacity: 0;
+		transform: translateX(calc(-50% * var(--direction, 1)));
+	}
+
+	100% {
+		transform: translateX(0%);
+	}
+} */

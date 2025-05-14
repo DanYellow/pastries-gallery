@@ -57,7 +57,7 @@ $item_index = array_search($lowercase_folder, $list_cleaned_items);
 
     <link rel="stylesheet" href="assets/reset.css">
     <link rel="stylesheet" href="assets/style.css">
-
+    <script src="assets/index.js" defer></script>
 
     <?php
         foreach ($list_imgs_folder as $idx => $img) {
@@ -67,34 +67,33 @@ $item_index = array_search($lowercase_folder, $list_cleaned_items);
 </head>
 
 <body>
-    <main class="main">
-        <header class="nav-header">
-            <h1 class="header-title" style='view-transition-name: title'><?php echo $altPastryName; ?></h1>
+    <header class="nav-header container">
+        <h1 class="header-title" style='view-transition-name: title'><?php echo $altPastryName; ?></h1>
 
-            <nav class="nav-links">
-                <?php
-                    if ($list_cleaned_items[$item_index - 1]) {
-                ?>
-                    <a href='details.php?folder=<?php echo $list_cleaned_items[$item_index - 1]; ?>' class="navigation-link">
-                        <span style="scale: -1 1; text-decoration: none;">➜</span>
-                        <span><?php echo str_replace('-', ' ', $list_cleaned_items[$item_index - 1]); ?></span>
-                    </a>
-                <?php } else { ?>
-                    <div></div>
-                <?php } ?>
-                <a href="index.php" class="link-main">Accueil</a>
+        <nav class="nav-links">
+            <?php
+                if ($list_cleaned_items[$item_index - 1]) {
+            ?>
+                <a href='details.php?folder=<?php echo $list_cleaned_items[$item_index - 1]; ?>' class="navigation-link" data-navigation-link="-1">
+                    <span style="scale: -1 1; text-decoration: none;">➜</span>
+                    <span><?php echo str_replace('-', ' ', $list_cleaned_items[$item_index - 1]); ?></span>
+                </a>
+            <?php } else { ?>
+                <div></div>
+            <?php } ?>
+            <a href="index.php" class="link-main">Accueil</a>
 
-                <?php
-                    if ($list_cleaned_items[$item_index + 1]) {
-                ?>
-                    <a href='details.php?folder=<?php echo $list_cleaned_items[$item_index + 1]; ?>' class="navigation-link" style="justify-self: end;">
-                        <span><?php echo str_replace('-', ' ', $list_cleaned_items[$item_index + 1]); ?></span>
-                        <span style="text-decoration: none;">➜</span>
-                    </a>
-                <?php } ?>
-            </nav>
-        </header>
-
+            <?php
+                if ($list_cleaned_items[$item_index + 1]) {
+            ?>
+                <a href='details.php?folder=<?php echo $list_cleaned_items[$item_index + 1]; ?>' class="navigation-link" data-navigation-link="1" style="justify-self: end;">
+                    <span><?php echo str_replace('-', ' ', $list_cleaned_items[$item_index + 1]); ?></span>
+                    <span style="text-decoration: none;">➜</span>
+                </a>
+            <?php } ?>
+        </nav>
+    </header>
+    <main class="main container" style="view-transition-name: page;">
         <ul class="details">
         <!-- https://monknow.github.io/almanac-view-transition/index-1.html -->
             <!-- <li>

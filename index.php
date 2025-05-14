@@ -12,11 +12,10 @@
     <script src="assets/index.js" defer></script>
 </head>
 <body>
-    <main class="main">
-        <header>
-            <h1 class="header-title" style='view-transition-name: title'>🍰 Pâtisseries !</h1>
-        </header>
-
+    <header class="container">
+        <h1 class="header-title" style='view-transition-name: title'>🍰 Pâtisseries !</h1>
+    </header>
+    <main class="main container">
         <ul class="gallery">
             <?php
                 $list_imgs = glob('patisseries/*.jpg');
